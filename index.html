@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>GuluGulu</title>
 
   <style>
@@ -8,19 +9,19 @@
       margin: 0;
       min-height: 100vh;
       background-color: #ffd6e5;
-      position: relative;
-      overflow-x: hidden;
       font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    /* HEARTS */
+    /* Floating hearts */
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #d6336c;
+      width: 22px;
+      height: 22px;
+      background-color: #e75480;
       transform: rotate(-45deg);
-      opacity: 0.35;
+      opacity: 0.4;
       z-index: 1;
     }
 
@@ -28,98 +29,87 @@
     .heart::after {
       content: "";
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #d6336c;
+      width: 22px;
+      height: 22px;
+      background-color: #e75480;
       border-radius: 50%;
     }
 
     .heart::before {
-      top: -10px;
+      top: -11px;
       left: 0;
     }
 
     .heart::after {
-      left: 10px;
+      left: 11px;
       top: 0;
     }
 
-    /* WATERMARK */
+    /* Content area */
+    .content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #7a2d45;
+    }
+
+    p {
+      color: #7a2d45;
+      margin-top: 0;
+    }
+
+    /* Watermark */
     .watermark {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 90px;
+      font-size: 56px;
       font-weight: bold;
       font-style: italic;
-      color: #e75480;
-      opacity: 0.30;
+      color: #eaa0b7;
+      opacity: 0.25;
       z-index: 2;
       pointer-events: none;
       white-space: nowrap;
     }
 
-    /* TEXT */
-    .content {
-      position: relative;
-      z-index: 5;
-      text-align: center;
-      padding: 110px 20px 20px;
-      color: #7a1f45;
-    }
-
-    /* COMMENTS CARD */
+    /* Comment box container */
     .comments-wrapper {
       position: relative;
-      z-index: 6;
-      max-width: 720px;
-      margin: 10px auto 80px;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 18px;
+      z-index: 3;
+      max-width: 700px;
+      margin: 40px auto 80px;
+      background: rgba(255, 255, 255, 0.65);
       padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    /* DISQUS CLEANUP */
-    #disqus_thread iframe {
-      min-height: 400px;
-    }
-
-    /* Hide Disqus clutter */
-    .disqus-footer,
-    .disqus-footer__wrapper,
-    .disqus-footer__powered-by,
-    .comment-policy,
-    .nav-tab,
-    .dropdown,
-    .avatar,
-    .author-avatar,
-    .thread__header,
-    .sorting,
-    .reaction,
-    .subscribe,
-    .recommendations {
-      display: none !important;
+      border-radius: 16px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEARTS -->
-  <div class="heart" style="top: 12%; left: 18%;"></div>
-  <div class="heart" style="top: 28%; left: 72%;"></div>
-  <div class="heart" style="top: 42%; left: 32%;"></div>
-  <div class="heart" style="top: 58%; left: 82%;"></div>
-  <div class="heart" style="top: 72%; left: 22%;"></div>
+  <!-- Hearts -->
+  <div class="heart" style="top:10%; left:15%;"></div>
+  <div class="heart" style="top:20%; left:70%;"></div>
+  <div class="heart" style="top:35%; left:40%;"></div>
+  <div class="heart" style="top:55%; left:20%;"></div>
+  <div class="heart" style="top:65%; left:75%;"></div>
+  <div class="heart" style="top:80%; left:50%;"></div>
+  <div class="heart" style="top:45%; left:85%;"></div>
+  <div class="heart" style="top:30%; left:5%;"></div>
+  <div class="heart" style="top:75%; left:10%;"></div>
+  <div class="heart" style="top:15%; left:55%;"></div>
 
-  <!-- WATERMARK -->
-  <div class="watermark">
-    This is our place
-  </div>
+  <!-- Watermark -->
+  <div class="watermark">This is our place</div>
 
-  <!-- TEXT -->
+  <!-- Main text -->
   <div class="content">
     <h1>GuluGulu</h1>
     <p>
@@ -129,19 +119,29 @@
     </p>
   </div>
 
-  <!-- COMMENTS -->
+  <!-- Comment box -->
   <div class="comments-wrapper">
     <div id="disqus_thread"></div>
-    <script>
-      (function () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://YOUR-DISQUS-SHORTNAME.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
-    <noscript>Please enable JavaScript to view the comments.</noscript>
   </div>
+
+  <!-- Disqus -->
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = "gulugulu-main";
+    };
+
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://gulu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+  <noscript>
+    Please enable JavaScript to view the comments.
+  </noscript>
 
 </body>
 </html>
