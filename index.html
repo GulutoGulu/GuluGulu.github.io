@@ -2,9 +2,60 @@
 <html>
 <head>
   <title>GuluGulu</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #ffd6e5;
+      position: relative;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #d6336c;
+      transform: rotate(-45deg);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #d6336c;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+  </style>
 </head>
+
 <body>
-  <h2>Welcome to GuluGulu</h2>
-  <p>This page is open for thoughts and images.</p>
+
+  <div class="heart" style="top: 10%; left: 15%;"></div>
+  <div class="heart" style="top: 25%; left: 70%;"></div>
+  <div class="heart" style="top: 40%; left: 30%;"></div>
+  <div class="heart" style="top: 55%; left: 80%;"></div>
+  <div class="heart" style="top: 70%; left: 20%;"></div>
+
+  <div class="heart" style="top: 15%; left: 50%;"></div>
+  <div class="heart" style="top: 35%; left: 85%;"></div>
+  <div class="heart" style="top: 60%; left: 45%;"></div>
+  <div class="heart" style="top: 75%; left: 65%;"></div>
+  <div class="heart" style="top: 85%; left: 35%;"></div>
+
 </body>
 </html>
