@@ -6,14 +6,14 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      background-color: #ffd6e5; /* light pink */
+      min-height: 100vh;
+      background-color: #ffd6e5;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: Arial, sans-serif;
     }
 
-    /* HEARTS – BACKGROUND */
+    /* HEARTS */
     .heart {
       position: absolute;
       width: 20px;
@@ -21,7 +21,7 @@
       background-color: #d6336c;
       transform: rotate(-45deg);
       opacity: 0.35;
-      z-index: 1; /* behind everything */
+      z-index: 1;
     }
 
     .heart::before,
@@ -44,65 +44,82 @@
       top: 0;
     }
 
-    /* WATERMARK – BEHIND TEXT */
+    /* WATERMARK */
     .watermark {
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 90px;            /* BIGGER watermark */
+      font-size: 90px;
       font-weight: bold;
       font-style: italic;
-      color: #e75480;             /* medium pink */
+      color: #e75480;
       opacity: 0.30;
-      z-index: 2;                 /* behind text */
+      z-index: 2;
       pointer-events: none;
       white-space: nowrap;
     }
 
-    /* MAIN TEXT – FOREGROUND */
+    /* TEXT */
     .content {
       position: relative;
-      z-index: 5;                 /* above hearts & watermark */
+      z-index: 5;
       text-align: center;
-      padding-top: 120px;
+      padding: 110px 20px 20px;
       color: #7a1f45;
     }
 
-    .content h1 {
-      margin-bottom: 10px;
-      font-weight: normal;
+    /* COMMENTS CARD */
+    .comments-wrapper {
+      position: relative;
+      z-index: 6;
+      max-width: 720px;
+      margin: 10px auto 80px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
-    .content p {
-      opacity: 0.9;
-      line-height: 1.6;
+    /* DISQUS CLEANUP */
+    #disqus_thread iframe {
+      min-height: 400px;
+    }
+
+    /* Hide Disqus clutter */
+    .disqus-footer,
+    .disqus-footer__wrapper,
+    .disqus-footer__powered-by,
+    .comment-policy,
+    .nav-tab,
+    .dropdown,
+    .avatar,
+    .author-avatar,
+    .thread__header,
+    .sorting,
+    .reaction,
+    .subscribe,
+    .recommendations {
+      display: none !important;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEARTS (ALL BEHIND TEXT) -->
-  <div class="heart" style="top: 10%; left: 15%;"></div>
-  <div class="heart" style="top: 25%; left: 70%;"></div>
-  <div class="heart" style="top: 40%; left: 30%;"></div>
-  <div class="heart" style="top: 55%; left: 80%;"></div>
-  <div class="heart" style="top: 70%; left: 20%;"></div>
-  <div class="heart" style="top: 15%; left: 50%;"></div>
-  <div class="heart" style="top: 35%; left: 85%;"></div>
-  <div class="heart" style="top: 60%; left: 45%;"></div>
-  <div class="heart" style="top: 75%; left: 65%;"></div>
-  <div class="heart" style="top: 85%; left: 35%;"></div>
-  <div class="heart" style="top: 22%; left: 55%;"></div>
-  <div class="heart" style="top: 62%; left: 10%;"></div>
+  <!-- HEARTS -->
+  <div class="heart" style="top: 12%; left: 18%;"></div>
+  <div class="heart" style="top: 28%; left: 72%;"></div>
+  <div class="heart" style="top: 42%; left: 32%;"></div>
+  <div class="heart" style="top: 58%; left: 82%;"></div>
+  <div class="heart" style="top: 72%; left: 22%;"></div>
 
   <!-- WATERMARK -->
   <div class="watermark">
     This is our place
   </div>
 
-  <!-- FOREGROUND TEXT -->
+  <!-- TEXT -->
   <div class="content">
     <h1>GuluGulu</h1>
     <p>
@@ -110,6 +127,20 @@
       Say what you feel.<br>
       Leave when you want.
     </p>
+  </div>
+
+  <!-- COMMENTS -->
+  <div class="comments-wrapper">
+    <div id="disqus_thread"></div>
+    <script>
+      (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://YOUR-DISQUS-SHORTNAME.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the comments.</noscript>
   </div>
 
 </body>
